@@ -1,0 +1,5 @@
+# Thư mục chứa các thư viện tải về, không cần đưa lên Git
+node_modules/
+
+# File chứa các biến môi trường, không nên commit lên git vì chứa thông tin nhạy cảm (API keys, database credentials, v.v.)
+.env

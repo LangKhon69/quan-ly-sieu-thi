@@ -29,3 +29,12 @@ Tôi là sinh viên năm 4, kiến thức web còn đang học.
 
 ## Quy ước Git
 Tin nhắn commit dạng: feat: (tính năng mới), fix: (sửa lỗi), docs: (tài liệu), chore: (việc vặt).
+
+
+## Luật nghiệp vụ (tích điểm)
+- Cứ 10.000đ chi tiêu được 1 điểm (làm tròn xuống).
+- 1 điểm khi dùng sẽ giảm 100đ trên hóa đơn.
+- Khách vãng lai (không có số điện thoại) vẫn mua được nhưng không tích điểm.
+- Chưa có hạng thành viên (để dành cho sau).
+- Điểm dùng không được vượt số điểm khách đang có, và không được làm tổng tiền âm.
+- Điểm được tính trên số tiền khách thực trả (sau khi đã trừ giảm giá bằng điểm).

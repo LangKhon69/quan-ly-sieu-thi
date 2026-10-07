@@ -38,3 +38,7 @@ Tin nhắn commit dạng: feat: (tính năng mới), fix: (sửa lỗi), docs: (
 - Chưa có hạng thành viên (để dành cho sau).
 - Điểm dùng không được vượt số điểm khách đang có, và không được làm tổng tiền âm.
 - Điểm được tính trên số tiền khách thực trả (sau khi đã trừ giảm giá bằng điểm).
+
+
+## Lưu ý về Prisma
+- Dự án dùng Prisma phiên bản 6 và kiểu require (CommonJS). Không dùng cú pháp của các phiên bản khác.

@@ -42,3 +42,12 @@ Tin nhắn commit dạng: feat: (tính năng mới), fix: (sửa lỗi), docs: (
 
 ## Lưu ý về Prisma
 - Dự án dùng Prisma phiên bản 6 và kiểu require (CommonJS). Không dùng cú pháp của các phiên bản khác.
+
+
+## Quy ước đặt tên cơ sở dữ liệu
+- Tên bảng và cột trong database: tiếng Việt không dấu, chữ thường, nối bằng gạch dưới, bảng đặt tên số ít (danh_muc, san_pham, ngay_tao).
+- Model và trường trong Prisma: tiếng Việt không dấu, kiểu viết hoa chữ đầu mỗi từ (DanhMuc, moTa), dùng @@map và @map để ánh xạ sang tên trong database.
+- Cột ID giữ tên "id"; khóa ngoại đặt theo dạng tên bảng + _id (danh_muc_id).
+- Tiền tệ (VND) lưu bằng số nguyên (Int), không dùng số thập phân.
+- Sản phẩm ngừng bán thì đặt dangKinhDoanh = false, không xóa.
+- Bảng đối chiếu: nguoi_dung, danh_muc, san_pham, nha_cung_cap, phieu_nhap, chi_tiet_phieu_nhap, hoa_don, chi_tiet_hoa_don, khach_hang, lich_su_diem.

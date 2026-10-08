@@ -7,11 +7,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Category {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
-  description String?
-  createdAt   DateTime @default(now())
+model DanhMuc {
+  id              Int        @id @default(autoincrement())
+  ten             String     @unique
+  moTa            String?    @map("mo_ta")
+  ngayTao         DateTime   @default(now()) @map("ngay_tao")
+  danhSachSanPham SanPham[]
 
-  @@map("categories")
+  @@map("danh_muc")
 }
+
+model SanPham {
+  id            Int      @id @default(autoincrement())
+  ten           String
+  maVach        String?  @unique @map("ma_vach")
+  donViTinh     String   @map("don_vi_tinh")
+  giaBan        Int      @map("gia_ban")
+  giaNhap       Int      @default(0) @map("gia_nhap")
+  soLuongTon    Int      @default(0) @map("so_luong_ton")
+  dangKinhDoanh Boolean  @default(true) @map("dang_kinh_doanh")
+  ngayTao       DateTime @default(now()) @map("ngay_tao")
+  ngayCapNhat   DateTime @updatedAt @map("ngay_cap_nhat")
+
+  danhMucId     Int      @map("danh_muc_id")
+  danhMuc       DanhMuc  @relation(fields: [danhMucId], references: [id])
+
+  @@map("san_pham")
+}
+

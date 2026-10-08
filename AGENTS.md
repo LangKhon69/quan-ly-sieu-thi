@@ -51,3 +51,10 @@ Tin nhắn commit dạng: feat: (tính năng mới), fix: (sửa lỗi), docs: (
 - Tiền tệ (VND) lưu bằng số nguyên (Int), không dùng số thập phân.
 - Sản phẩm ngừng bán thì đặt dangKinhDoanh = false, không xóa.
 - Bảng đối chiếu: nguoi_dung, danh_muc, san_pham, nha_cung_cap, phieu_nhap, chi_tiet_phieu_nhap, hoa_don, chi_tiet_hoa_don, khach_hang, lich_su_diem.
+
+
+## Quy ước API
+- Địa chỉ API viết tiếng Việt không dấu, chữ thường, nối bằng gạch ngang, bắt đầu bằng /api (ví dụ /api/san-pham).
+- Dữ liệu trả về dạng JSON; thông báo lỗi dùng trường "thongBao" bằng tiếng Việt.
+- Dùng mã trạng thái đúng: 200 thành công, 400 yêu cầu sai, 404 không tìm thấy, 500 lỗi máy chủ.
+- Bọc phần truy cập database trong try/catch.

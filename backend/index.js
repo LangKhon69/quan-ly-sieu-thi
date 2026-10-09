@@ -12,8 +12,22 @@ app.get('/', (req, res) => {
   res.send('Xin chào! Backend siêu thị đang chạy.');
 });
 
+// Lấy danh sách danh mục
+app.get('/api/danh-muc', async (req, res) => {
+  try {
+    const danhSach = await prisma.danhMuc.findMany({
+      orderBy: { id: 'asc' },
+    });
+    res.json(danhSach);
+  } catch (loi) {
+    console.error(loi);
+    res.status(500).json({ thongBao: 'Lỗi máy chủ, không lấy được danh sách danh mục.' });
+  }
+});
+
 // Lấy danh sách sản phẩm đang kinh doanh
 app.get('/api/san-pham', async (req, res) => {
+  console.log('Có khách vừa gọi danh sách sản phẩm!');
   try {
     const danhSach = await prisma.sanPham.findMany({
       where: { dangKinhDoanh: true },

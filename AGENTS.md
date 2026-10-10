@@ -58,3 +58,6 @@ Tin nhắn commit dạng: feat: (tính năng mới), fix: (sửa lỗi), docs: (
 - Dữ liệu trả về dạng JSON; thông báo lỗi dùng trường "thongBao" bằng tiếng Việt.
 - Dùng mã trạng thái đúng: 200 thành công, 400 yêu cầu sai, 404 không tìm thấy, 500 lỗi máy chủ.
 - Bọc phần truy cập database trong try/catch.
+- Thêm mới thành công trả mã 201 : dữ liệu bị trùng (ví dụ mã vạch) trả mã 409.
+- Luôn kiểm tra dữ liệu đầu vào (kiểu, giá trị rỗng, số âm) trước khi ghi database.
+- Mỗi tính năng mới làm trên một nhánh riêng (feature/...), gộp vào main qua Pull Request.

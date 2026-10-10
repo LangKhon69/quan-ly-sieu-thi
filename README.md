@@ -23,6 +23,7 @@
 | GET | /api/san-pham | Danh sách sản phẩm đang kinh doanh |
 | GET | /api/san-pham/:id | Chi tiết một sản phẩm |
 | GET | /api/danh-muc | Danh sách danh mục |
+| POST | /api/san-pham | Thêm sản phẩm mới |
 
 ## Tiến độ
 - [x] Thiết lập môi trường, Git, cơ sở dữ liệu

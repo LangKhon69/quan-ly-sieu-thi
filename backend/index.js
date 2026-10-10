@@ -62,6 +62,66 @@ app.get('/api/san-pham/:id', async (req, res) => {
     res.status(500).json({ thongBao: 'Lỗi máy chủ, không lấy được sản phẩm.' });
   }
 });
+const laSoNguyenKhongAm = (x) => Number.isInteger(x) && x >= 0;
+
+// Thêm sản phẩm mới
+app.post('/api/san-pham', async (req, res) => {
+  const { ten, maVach, donViTinh, giaBan, giaNhap, soLuongTon, danhMucId } = req.body ?? {};
+
+  // 1. Đọc và kiểm tra phiếu order
+  if (typeof ten !== 'string' || ten.trim() === '') {
+    return res.status(400).json({ thongBao: 'Tên sản phẩm không được để trống.' });
+  }
+  if (typeof donViTinh !== 'string' || donViTinh.trim() === '') {
+    return res.status(400).json({ thongBao: 'Đơn vị tính không được để trống.' });
+  }
+  if (!laSoNguyenKhongAm(giaBan)) {
+    return res.status(400).json({ thongBao: 'Giá bán phải là số nguyên không âm.' });
+  }
+  if (giaNhap !== undefined && !laSoNguyenKhongAm(giaNhap)) {
+    return res.status(400).json({ thongBao: 'Giá nhập phải là số nguyên không âm.' });
+  }
+  if (soLuongTon !== undefined && !laSoNguyenKhongAm(soLuongTon)) {
+    return res.status(400).json({ thongBao: 'Số lượng tồn phải là số nguyên không âm.' });
+  }
+  if (maVach !== undefined && maVach !== null && typeof maVach !== 'string') {
+    return res.status(400).json({ thongBao: 'Mã vạch phải là chuỗi ký tự.' });
+  }
+  if (!Number.isInteger(danhMucId)) {
+    return res.status(400).json({ thongBao: 'Mã danh mục không hợp lệ.' });
+  }
+
+  try {
+    // 2. Hỏi kho: danh mục có tồn tại không?
+    const danhMuc = await prisma.danhMuc.findUnique({ where: { id: danhMucId } });
+    if (!danhMuc) {
+      return res.status(400).json({ thongBao: 'Danh mục không tồn tại.' });
+    }
+
+    // 3. Ghi vào kho
+    const sanPham = await prisma.sanPham.create({
+      data: {
+        ten: ten.trim(),
+        maVach: maVach || null,
+        donViTinh: donViTinh.trim(),
+        giaBan,
+        giaNhap: giaNhap ?? 0,
+        soLuongTon: soLuongTon ?? 0,
+        danhMucId,
+      },
+      include: { danhMuc: true },
+    });
+
+    // 4. Báo lại cho khách
+    res.status(201).json(sanPham);
+  } catch (loi) {
+    if (loi.code === 'P2002') {
+      return res.status(409).json({ thongBao: 'Mã vạch này đã tồn tại.' });
+    }
+    console.error(loi);
+    res.status(500).json({ thongBao: 'Lỗi máy chủ, không thêm được sản phẩm.' });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server chạy tại http://localhost:${PORT}`);

@@ -35,4 +35,4 @@
 - [ ] Giao diện React
 
 ## Ghi chú
-Dự án có dùng trợ lý AI (GitHub Copilot), hướng dẫn cho trợ lý nằm trong file `AGENTS.md`.
+Dự án có dùng trợ lý AI (GitHub Copilot, Antigravity), hướng dẫn cho trợ lý nằm trong file `AGENTS.md`.

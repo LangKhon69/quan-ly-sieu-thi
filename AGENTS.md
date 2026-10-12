@@ -25,7 +25,8 @@ Tôi là sinh viên năm 4, kiến thức web còn đang học.
 - Không tự cài thêm thư viện mà chưa hỏi tôi.
 - Không xóa hoặc sửa file ngoài phạm vi công việc được giao.
 - Không bao giờ ghi mật khẩu hoặc khóa bí mật vào code; dùng file .env.
-- Luôn nhắc nhở tôi về sự xung đột khi thêm mới tính năng mà ảnh hưởng đến các tính năng sẵn có 
+- Luôn nhắc nhở tôi về sự xung đột khi thêm mới tính năng mà ảnh hưởng đến các tính năng sẵn có.
+- Sau khi viết code xong, phải tự chạy thử (test API/logic) và kiểm duyệt kỹ trước khi báo cáo kết quả cho tôi.
 
 ## Quy ước Git
 Tin nhắn commit dạng: feat: (tính năng mới), fix: (sửa lỗi), docs: (tài liệu), chore: (việc vặt).
